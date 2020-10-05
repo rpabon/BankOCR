@@ -8,6 +8,7 @@ const six = [' ', '_', ' ', '|', '_', ' ', '|', '_', '|'];
 const seven = [' ', '_', ' ', ' ', ' ', '|', ' ', ' ', '|'];
 const eight = [' ', '_', ' ', '|', '_', '|', '|', '_', '|'];
 const nine = [' ', '_', ' ', '|', '_', '|', ' ', '_', '|'];
+const error = 'Error in data';
 
 module.exports = {
   zero: JSON.stringify(zero),
@@ -20,4 +21,5 @@ module.exports = {
   seven: JSON.stringify(seven),
   eight: JSON.stringify(eight),
   nine: JSON.stringify(nine),
+  error,
 };

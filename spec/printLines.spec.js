@@ -1,4 +1,5 @@
 const getOutputLines = require('../src/getOutputLines');
+const { error } = require('../src/numberList');
 
 it('should print lines correctly', () => {
   const inputText = [
@@ -36,7 +37,5 @@ it('should print error message on invalid inputs', () => {
     '',
   ];
 
-  expect(getOutputLines(inputText)).toBe(
-    '-Error in data--Error in data-3456789\n' + '-Error in data-3\n'
-  );
+  expect(getOutputLines(inputText)).toBe(error + '\n' + error + '\n');
 });

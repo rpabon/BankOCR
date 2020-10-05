@@ -9,6 +9,7 @@ const {
   eight,
   nine,
   zero,
+  error,
 } = require('./numberList');
 
 function evaluateMatrixLine(matrixNumberRow = []) {
@@ -35,7 +36,7 @@ function evaluateMatrixLine(matrixNumberRow = []) {
   } else if (stringLine === nine) {
     return '9';
   } else {
-    return '-Error in data-';
+    return error;
   }
 }
 
@@ -44,14 +45,18 @@ function evaluateMatrixLine(matrixNumberRow = []) {
  * @param {string[][]} numbersMatrix - Each line of the outer array is an OCR number
  * @returns {string} outputLine - String to be printed in the console
  */
-function getLineString(numbersMatrix = []) {
-  let outputLine = '';
+function getLineString(numbersMatrix = [], outputString = '', i = 0) {
+  if (i === numbersMatrix.length) {
+    return outputString;
+  }
 
-  numbersMatrix.forEach(function (matrixNumberRow) {
-    outputLine += evaluateMatrixLine(matrixNumberRow);
-  });
+  const singleNumberString = evaluateMatrixLine(numbersMatrix[i]);
 
-  return outputLine;
+  if (singleNumberString === error) {
+    return error;
+  }
+
+  return getLineString(numbersMatrix, outputString + singleNumberString, i + 1);
 }
 
 module.exports = getLineString;
