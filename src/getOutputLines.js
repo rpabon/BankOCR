@@ -14,7 +14,9 @@ function getOutputLines(
   outputLineString = ''
 ) {
   // Exit recursive function
-  if (index === dataAsLineArray.length) return outputLineString;
+  if (index === dataAsLineArray.length) {
+    return outputLineString.trim();
+  }
 
   const currentLine = dataAsLineArray[index];
   let updatedLineGroup = [...lineGroup];
