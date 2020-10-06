@@ -13,7 +13,7 @@ function getOutputLines(
   lineGroup = [],
   outputLineString = ''
 ) {
-  // Exit recursive function
+  // Remove last line break and exit recursive function
   if (index === dataAsLineArray.length) {
     return outputLineString.trim();
   }
@@ -25,11 +25,17 @@ function getOutputLines(
     updatedLineGroup.push(currentLine);
   }
 
+  /**
+   * If the line is empty, it means the OCR block ended.
+   * An array of arrays is created, each row is a single OCR number.
+   */
   if (
     updatedLineGroup.length &&
     (!currentLine || index === dataAsLineArray.length - 1)
   ) {
     const numbersMatrix = getNumbersMatrix(updatedLineGroup);
+
+    // Add numbers to the string to be displayed
     outputLineString += getLineString(numbersMatrix) + '\n';
 
     // Start a new OCR line

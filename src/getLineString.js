@@ -51,7 +51,6 @@ function getLineString(numbersMatrix = [], outputString = '', i = 0) {
   }
 
   const singleNumberString = evaluateMatrixLine(numbersMatrix[i]);
-
   if (singleNumberString === error) {
     return error;
   }

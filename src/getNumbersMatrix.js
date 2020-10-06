@@ -9,6 +9,7 @@ function getNumberMatrix(ocrLine = []) {
   for (let i = 0; i < ocrLine.length; i++) {
     const line = ocrLine[i].split('');
 
+    // A new number starts every three characters
     for (let j = 0; j < line.length; j += 3) {
       const index = Math.floor(j / 3);
       const lineSection = line.slice(j, j + 3);
